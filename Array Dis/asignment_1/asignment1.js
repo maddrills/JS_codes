@@ -181,3 +181,28 @@ const books = [
       highlighted: true
     }
   ];
+
+//destructing arrays
+  //first and second
+  const[firstBook, secondBook] = books;
+  console.log(`First Book: ${firstBook} and second book ${secondBook}`);
+
+  //skip first and second
+  const[,,thirsdBook] = books;
+  console.log(`thirdBook is : ${thirsdBook}`);
+
+  const ratingz = books[books.length - 1];
+  console.log(ratingz);
+
+  const ratings = [['rating', 4.19], ['ratingsCount', 144584]];
+
+  const [[,val1],[,val2]] = ratings;
+
+  console.log(val1, val2);
+
+  const ratingStars = [63405, 1808];
+
+  const [rating1 = 0,rating2 = 0,rating3 = 0] = ratingStars;
+  console.log(rating3,rating1);
+
+
