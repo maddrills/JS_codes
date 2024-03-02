@@ -21,7 +21,9 @@ const books = [
           oneStarRatingCount: 13
         }
       },
-      highlighted: true
+      highlighted: true,
+      printBookInfo : function({title = ' ', author = ' ', year = ' Unkown'}){
+        console.log(`The Todays Show With ${title}, ${author}, ${year}`)}
     },
     {
       title: 'Structure and Interpretation of Computer Programs',
@@ -202,7 +204,69 @@ const books = [
 
   const ratingStars = [63405, 1808];
 
+//distructing objects 
+
   const [rating1 = 0,rating2 = 0,rating3 = 0] = ratingStars;
   console.log(rating3,rating1);
+
+  const {title,author, ISBN} = books[0];
+  console.log(title, author, ISBN);
+
+  //distroy the array then the object in which resides keywords array then reasign to title
+  const {
+    keywords : tags,
+  } = books[0];
+  console.log(tags);
+
+  //making a new non existing field programmingLanguage that isent a field in books
+  const {language, programmingLanguage = 'Unkown'} = books[6];
+  console.log(language);
+
+  let bookTitle = 'unknown';
+  let bookAuthor = 'unknown';
+
+  //new value reasigned 
+  ({title : bookTitle, author : bookAuthor} = books[0]);
+
+  console.log(books[0].title)
+
+
+//unreated
+  const jasica = {
+    fname : 'jes',
+    age : 23
+  }
+
+
+  let person = jasica;
+
+  console.log(person);
+
+  person.fname = 'sdasd';
+
+  console.log(person);
+  console.log(jasica.fname);
+
+  //this to create a coppy of an object
+  const newperson = Object.assign({},jasica);
+
+
+  //inned object destructure for object in an object
+  //rember ratingR is just an alies {} is object destructuring if ratingR is a variable that value will be asigned 
+  const {thirdParty : {goodreads : {rating : ratingR}}} = books[0];
+  console.log(ratingR);
+
+
+  //object parameter destructure 
+  books[0].
+  printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick', year: '2011' });
+
+  books[0].printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
+
+
+
+
+
+
 
 
