@@ -268,5 +268,34 @@ const books = [
 
 
 
+  //spread 
+  console.log('-'.repeat(20),'spread o/p','-'.repeat(20));
+
+  const spread = [...books[0].author, ...books[1].author];
+  console.log(spread);
+  //(5) ['Robert Sedgewick', 'Kevin Wayne', 'Harold Abelson', 'Gerald Jay Sussman', 'Julie Sussman (Contributor)']
+
+  function spellWord1(word){
+
+    console.log(...word);
+    console.log(word);
+    // J a v a S c r i p t
+    // JavaScript
+  }
+  spellWord1('JavaScript');
+
+
+
+  function spellWord(...word){
+
+    console.log(word);
+    //(10) ['J', 'a', 'v', 'a', 'S', 'c', 'r', 'i', 'p', 't']
+  }
+  spellWord(...'JavaScript');// j a v a s c r i p t 
+
+
+
+
+
 
 
