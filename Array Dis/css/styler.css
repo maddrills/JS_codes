@@ -1,0 +1,7 @@
+.inc{
+    background-color: aqua;
+    padding: 10px 10px 10px 10px;
+}
+.inc:hover {
+    color: azure;
+}
