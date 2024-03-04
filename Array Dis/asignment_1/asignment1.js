@@ -286,15 +286,40 @@ const books = [
 
 
 
-  function spellWord(...word){
+  //
+  //
+  //
+  function spellWord5(word){
+
+    console.log(word);//5
+  }
+  spellWord5(5,2,3,4,5);// JavaScript
+
+  function spellWord2(word){
+
+    console.log(word);// J
+  }
+  spellWord2(...'JavaScript');// JavaScript
+  //
+  //
+  //
+
+
+
+  function spellWord3(...word){
 
     console.log(word);
     //(10) ['J', 'a', 'v', 'a', 'S', 'c', 'r', 'i', 'p', 't']
   }
-  spellWord(...'JavaScript');// j a v a s c r i p t 
+  spellWord3(...'JavaScript');// j a v a s c r i p t 
 
 
+  function spellWord4(...word){
 
+    console.log(word);
+    //(1) ['JavaScript']
+  }
+  spellWord4('JavaScript');// JavaScript
 
 
 
