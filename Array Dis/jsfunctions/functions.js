@@ -58,3 +58,5 @@ const higherOrder2 = (firstName, age) => {
 const ale2 = higherOrder2.bind(null, "Violet");
 ale2()();//he First Name Violet age undefined inner Function undefined
 ale2(23)("Francis"); // The First Name Violet age 23 inner Function Francis
+
+(() => console.log("welooooo"))();
