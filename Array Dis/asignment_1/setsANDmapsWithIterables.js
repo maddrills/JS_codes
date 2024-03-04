@@ -173,7 +173,7 @@ console.log(Object.entries(rest1));//[Array(2), Array(2), Array(2)] it is an arr
 //1: (2) ['numberOfgust', 10]
 //2: (2) ['crimes', 0]
 
-const objectMapCoverted = new Map(Object.entries(rest1));
+const objectMapCoverted = new Map(Object.entries(rest1)); // rest1 is an object
 
 console.log(objectMapCoverted);// Map(3) {'rName' => 'reovani auditore', 'numberOfgust' => 10, 'crimes' => 0}
 

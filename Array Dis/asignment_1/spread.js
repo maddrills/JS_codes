@@ -88,11 +88,11 @@ const testaObject = {
     hobby : 'music'
 };
 
-console.log({...testaObject});
+console.log({...testaObject});// {fname: 'mathew francis', age: 25, hobby: 'music'}
 
 //add stuff to objects
 const object2 = {...testaObject, fun : 'cycling'};
-console.log(object2);
+console.log(object2);//{fname: 'mathew francis', age: 25, hobby: 'music', fun: 'cycling'}
 
 //obect asignment spread
 
@@ -119,7 +119,7 @@ const testObject2 = {
 //asignment spread 
 const {first, ...rest} = testObject2.hobies;
 
-console.log(first, rest);
+console.log(first, rest);//{theName: 'sing', duration: 2} {second: {…}, third: {…}}
 
 // {theName: 'sing', duration: 2} {second: {…}, third: {…}}
 // second : {theName: 'cycling', duration: 2}
