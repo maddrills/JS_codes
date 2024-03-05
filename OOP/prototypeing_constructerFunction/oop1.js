@@ -78,6 +78,7 @@ console.log(aar.__proto__); // have functions like map reduce etc
 // you can do that to
 
 //this just takes an array oject any removes duplicates
+//best practice not to do this
 Array.prototype.uniqueMathew = function(){
     return [...new Set(this)];
 }
