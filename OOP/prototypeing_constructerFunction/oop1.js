@@ -64,13 +64,25 @@ console.log(jones.species); //homosapian
 console.log(jones.hasOwnProperty('firstName')); //true
 console.log(jones.hasOwnProperty('species')); //false
 
+//this will display the prototype function of jones object
+console.log(jones.__proto__.__proto__);
+console.log(jones.__proto__.__proto__.__proto__); //null
+
+
+const aar = [3,4,4,6,6,3];
+console.log(aar.__proto__); // have functions like map reduce etc
 
 
 
+// now say you want to add your custom function to the Arrays.prototype
+// you can do that to
 
+//this just takes an array oject any removes duplicates
+Array.prototype.uniqueMathew = function(){
+    return [...new Set(this)];
+}
 
-
-
+console.log(aar.uniqueMathew()); //(3) [3, 4, 6]
 
 
 
