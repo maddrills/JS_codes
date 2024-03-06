@@ -55,6 +55,64 @@ console.log(jessica.__proto__ === PersonCl.prototype);//true
 
 
 
+// extends
+
+
+
+
+class StudentCl extends PersonCl{
+
+    //aparently the constructer is optional 
+    //because of the default constructer that if it is extending hists the super also provided you give the supers argument count
+    // but ill be using it for readability 
+    constructor(firstName, year, subject){
+        super(firstName, year);
+        this.subject = subject;
+    }
+
+    //local method
+    displaySubject(){
+        console.log(`Student: ${this.firstName} born of ${this.year} took a subject ${this.subject}`);
+
+    }
+
+
+    //overiding method
+    greet(){
+        console.log(`Overide Hello, ${this.firstName}`);
+    }
+
+}
+
+
+
+class StudentOld extends PersonCl{
+
+    constructor(firstName, year, subject){
+        super(firstName, year);
+        this.subject = subject;
+    }
+
+}
+
+
+console.log(new StudentOld("Old Man", 1998, 'phy').greet());
+try{
+    console.log(new StudentOld("Older Man", 1998, 'phy').displaySubject());
+}
+catch(error){console.log(error)}
+//// TypeError: (intermediate value).displaySubject is not a function
+    //at ES6Classes.js:101:58
+
+
+
+
+const kevin = new StudentCl("Kevin", 1998, 'hesoyam')
+console.log(kevin.greet());// Overide Hello, Kevin
+console.log(kevin.displaySubject());//Student: Kevin born of undefined took a subject hesoyam
+
+
+
 
 
 

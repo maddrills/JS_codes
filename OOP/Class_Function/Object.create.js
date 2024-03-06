@@ -35,3 +35,34 @@ steven.calcAge(); //39
 
 
 
+
+
+// non faking classes 
+// object chaining
+
+// now a child object of PersonProto
+const StudentProtot = Object.create(PersonProto);
+
+StudentProtot.init = function(firstName, birthYear, courses){
+    PersonProto.init.call(this, firstName, birthYear);
+    this.courses = courses;
+}
+
+StudentProtot.welcome = function(){
+    console.log(`Hello My name is ${this.firstName}, ${this.birthYear}, ${this.courses}`);
+}
+
+
+
+//child of StudentProtot
+const jay = Object.create(StudentProtot);
+
+jay.init('Jay', 2010, 'Computer Science');
+jay.welcome(); //Hello My name is Jay, 2010, Computer Science
+jay.calcAge(); //27
+
+
+
+
+
+
