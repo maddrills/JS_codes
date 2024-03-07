@@ -90,6 +90,13 @@ const flatendMapArray = accounts
 console.log(flatendMapArray);// 17840
 
 
+const flatendMapArray2 = accounts
+.map((val, pos, full) =>{
+    return val.movements
+});
+
+console.log(flatendMapArray2);// [Array(8), Array(8), Array(8), Array(5)]
+
 
 
 
