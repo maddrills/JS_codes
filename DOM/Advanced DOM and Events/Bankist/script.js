@@ -106,3 +106,57 @@ console.log(header);
 document
   .querySelector('.btn--close-cookie')
   .addEventListener('click', () => message.remove());
+
+// tootls for Styles, Attributes And Classes
+
+//changes the background color of an element by code\
+//these are inline styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+//to get the styles set in the style sheet
+console.log(getComputedStyle(message).height);
+
+// we can do this but rember all values from computedStyle is a string
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height) + 40 + 'px';
+
+//CSS varables
+// location is :root top of the css file
+//name of the property, value
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes grt
+// geting property atributes from elements like src href etc
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt); //Bankist logo
+
+// remember if there isent a property on a tag the return will be a null
+console.log(logo.designer); // undefined
+
+// Attributes Set
+
+console.log(logo.designer);
+console.log(logo.getAttribute('designer'));
+logo.setAttribute('company', 'Banklist');
+
+// there are two dfrences between arefrencing ang geting the attributr use appropreatly
+console.log(logo.src); //http://127.0.0.1:5501/DOM/Advanced%20DOM%20and%20Events/Bankist/img/logo.png
+console.log(logo.getAttribute('src')); //img/logo.png
+
+// DataAtributes
+// gets data atributs set in the element
+// store data in the html
+console.log(logo.dataset.versionNumber); // 3.0 check html data-version-number="3.0"
+
+// class Manupulation
+logo.classList.add('className');
+logo.classList.remove('className');
+logo.classList.toggle('className');
+logo.classList.contains('className');
+// can also add multiple classes to any
+logo.classList.add('className', '1className', '2className');
+
+// Dont use
+// it will overide all the classnames
+//logo.className = 'jones';
