@@ -208,3 +208,39 @@ btnScrollTo.addEventListener('click', function (e) {
   // only works with modern brousers
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+//190. Types of Events and Event Handlers
+
+// listning for a mouse enter event
+
+const h1 = document.querySelector('h1');
+
+//better because we can add multiple events to the same element
+// h1.addEventListener('mouseenter', function (e) {
+//   alert('You are reading the heading');
+// });
+
+//this will replace any events attached to the element
+// every element has a event property atached to it
+// old not used
+// h1.onmouseenter = function (e) {
+//   alert('You are reading the heading');
+// };
+
+//btter way of doing things
+//were you can add and remove an event listner
+// do this
+
+const alert2 = function (e) {
+  alert('addEventlistner');
+
+  //when call back function is exed then this will remove the even
+  //so effectively the event will only happen once
+  //we can remove it anywhere
+  h1.removeEventListener('mouseenter', alert2);
+};
+
+h1.addEventListener('mouseenter', alert2);
+
+//you can also use it in a set timeout
+setTimeout(() => h1.removeEventListener('mouseenter', alert2), 3000);
