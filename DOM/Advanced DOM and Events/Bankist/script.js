@@ -160,3 +160,51 @@ logo.classList.add('className', '1className', '2className');
 // Dont use
 // it will overide all the classnames
 //logo.className = 'jones';
+
+// scroll to a position
+
+// this is the button we will click to initiate the scroll
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+
+//scroll to
+const section1 = document.querySelector('#section--1');
+
+// way 1
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords); //DOMRect {x: 0, y: 171.1999969482422, width: 756.7999877929688, height: 1947, top: 171.1999969482422, …}
+
+  //this one is the distance from the btnScrollTo to the vh vew port and the left edge
+  console.log(e.target.getBoundingClientRect()); //DOMRect {x: 30, y: 161.9499969482422, width: 110, height: 27.600000381469727, top: 161.9499969482422, …}
+
+  console.log('Current scroll (x/y)', window.pageXOffset, pageYOffset); //Current scroll (x/y) 0 341.6000061035156 // rember it is depricates
+
+  // can also get height width of view port vh
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  ); //height/width viewport 499 757
+
+  //Scrolling // buggy because to is relative to the view port not the document
+  // window.scrollTo(s1coords.left, s1coords.top);
+
+  //solution and now it wont scroll back up
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  //smooth transition
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  // Modern way + smooth transition
+  // only works with modern brousers
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
