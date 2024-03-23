@@ -248,29 +248,70 @@ setTimeout(() => h1.removeEventListener('mouseenter', alert2), 3000);
 // Event Bubbling
 ///////////////////////////////////////
 // Event Propagation in Practice
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 
-// remember by default addEventListner only handels the bubbling phase
-//  to make capturing true you need to set the addEventListners third argumant to true
+// // remember by default addEventListner only handels the bubbling phase
+// //  to make capturing true you need to set the addEventListners third argumant to true
 
-document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('LINK', e.target, e.currentTarget);
-  console.log(e.currentTarget === this);
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('LINK', e.target, e.currentTarget);
+//   console.log(e.currentTarget === this);
 
-  // Stop propagation
-  // e.stopPropagation();
-});
+//   // Stop propagation
+//   // e.stopPropagation();
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('CONTAINER', e.target, e.currentTarget);
+// });
+
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('NAV', e.target, e.currentTarget);
+// });
+
+// page navigation
+//if zero so that i dont have to coment this
+if (0) {
+  document.querySelectorAll('.nav__link').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      // console.log('LINK');
+
+      // implement smooth scrolling
+      // this here points to the selection element object prototype here its the href we clicked on
+      const id = this.getAttribute('href');
+      console.log(id); // #section--1 #section--2 #section--3
+
+      // using the unique id from the href we can now scroll to it
+      document.querySelector(id).scrollIntoView({ behavior: 'smooth' }); // which is one of #section--1 #section--2 #section--3
+    });
+  });
+}
+
+// but the above is not very efficent
+//because we are adding an event listner to ever selected element by querySelectorAll
+
+//instead use event daligation using bubbling
+// 1. Add event listner to common parent element
+// 2. Determine what element originated the event
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('CONTAINER', e.target, e.currentTarget);
-});
+  //provided it shoud be its child element
+  console.log(e.target);
+  e.preventDefault();
 
-document.querySelector('.nav').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('NAV', e.target, e.currentTarget);
+  //matching stratigy
+  if (e.target.classList.contains('nav__link')) {
+    // console.log('only nave selected');
+    console.log(e);
+    const id = e.target.getAttribute('href');
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
 });
