@@ -315,3 +315,42 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+if (0) {
+  // the haeading when banking meets minimalist
+  const h1OfHeading = document.querySelector('h1');
+
+  //going downwards: child
+  console.log(h1OfHeading.querySelectorAll('.highlight'));
+
+  //we can also get all nodes and child elemenmts
+  console.log(h1OfHeading.childNodes);
+
+  //if you want just the elements
+  console.log(h1OfHeading.children);
+
+  //you can change the styling
+  h1OfHeading.firstElementChild.style.color = 'white';
+  h1OfHeading.lastElementChild.style.color = 'orangered';
+
+  //going upwards: paratents
+  // both do the same
+  console.log(h1OfHeading.parentNode);
+  console.log(h1OfHeading.parentElement);
+
+  // if we want to reach the parent no mater how high the parent is
+  console.log(h1OfHeading);
+  // finds the parent element with the class .header
+  h1OfHeading.closest('.header').style.background = 'blue';
+
+  // can also access seblings
+
+  //this would show any previos h1 siblings
+  console.log(h1OfHeading.previousElementSibling);
+  console.log(h1OfHeading.nextElementSibling);
+
+  // change all the child elements but the parent element
+  [...h1OfHeading.parentElement.children].forEach((ele, pos, full) => {
+    if (ele !== h1) ele.style.transform = 'scale(3.5)';
+  });
+}
