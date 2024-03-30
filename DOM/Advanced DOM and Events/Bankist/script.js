@@ -426,3 +426,52 @@ tabsContainer.addEventListener('click', e => {
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
+
+// nav bar highlight the hovering element and dim the rest
+
+const handleHover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    //the parent target
+    const sibling = link.closest('.nav').querySelectorAll('.nav__link');
+
+    const logo = link.closest('.nav').querySelector('img');
+
+    // change the opacity
+    sibling.forEach(el => {
+      //if not any random child element
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+
+const nav = document.querySelector('.nav');
+
+//not a prefered way
+if (0) {
+  nav.addEventListener('mouseover', function (e) {
+    handOver(e, 0.5);
+  });
+
+  //triggred when mouse leaves the element
+  nav.addEventListener('mouseout', function (e) {
+    if (e.target.classList.contains('nav__link')) {
+      handOver(e, 1);
+    }
+  });
+}
+
+//using bind that returns a new function with an object bound to it
+//passing argument into handler
+//the this variable that is the 1st argument will br 0.5 or 1
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
+
+//bellow is the explanation for the above
+const tester = function (name) {
+  console.log(`hello this${name} and the this key is${this}`);
+};
+
+const boundedFun = tester.bind(' the this keyword');
+boundedFun('Mathew'); //hello thisMathew and the this key is the this keyword
