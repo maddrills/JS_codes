@@ -354,3 +354,75 @@ if (0) {
     if (ele !== h1) ele.style.transform = 'scale(3.5)';
   });
 }
+
+// three small button under the heading
+//Everything as simple as possible, but no simpler.
+// Tabbed Component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+if (0) {
+  //but this is not a prefered way of adding events
+  tabs.forEach((ele, pos, full) =>
+    ele.addEventListener('click', () => console.log('TAB'))
+  );
+}
+
+// removes all active links
+// tabs.forEach((ele, pos, full) => {
+//   ele.classList.remove('operations__tab--active');
+// });
+
+// instead im goin to find the parent element of the buttens i want to click and add the click event to it then find the target clicked
+tabsContainer.addEventListener('click', e => {
+  // console.log(e.target);
+  //but below is buggy because if you were to click the text within the button then it wont work instead
+  if (0) {
+    if (e.target.classList.contains('operations__tab')) {
+      // removes all active links
+      // i put it in the the target filter so that only when the intended target element is clicked i will rest all
+      tabs.forEach((ele, pos, full) => {
+        ele.classList.remove('operations__tab--active');
+      });
+
+      // only the element that has operations__tab in its class list will be triggred
+      // console.log(e.target);
+      e.target.classList.add('operations__tab--active');
+    }
+  }
+
+  //find the closest parent (button class)  operations__tab and null if it doesnt exist
+  // closest selects itself and any match above
+  const clicked = e.target.closest('.operations__tab');
+
+  // guard to return any nulls
+  if (!clicked) return;
+
+  // removes all active links
+  tabs.forEach((ele, pos, full) => {
+    ele.classList.remove('operations__tab--active');
+  });
+
+  //first hide all the card data
+  document
+    .querySelectorAll('.operations__content')
+    .forEach((ele, pos, full) => {
+      ele.classList.remove('operations__content--active');
+    });
+  //else
+
+  //add active class to the button
+  // console.log(clicked);
+  clicked.classList.add('operations__tab--active');
+
+  //each button has these attributes class="btn operations__tab operations__tab--2" data-tab="2"
+  //swing the associated content using data-tab="2"
+
+  //first we get the data-tab elsement
+  // console.log(clicked.dataset.tab);
+
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
