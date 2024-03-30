@@ -475,3 +475,19 @@ const tester = function (name) {
 
 const boundedFun = tester.bind(' the this keyword');
 boundedFun('Mathew'); //hello thisMathew and the this key is the this keyword
+
+//not recomended
+//select the postion where you want the nav bare to stick
+
+const initailCordinates = section1.getBoundingClientRect();
+//sticky navigation
+window.addEventListener('scroll', function (e) {
+  console.log(this.window.scrollY);
+
+  // .nav.sticky {
+  //    position: fixed;
+  //    background-color: rgba(255, 255, 255, 0.95);
+  //}
+  if (this.window.scrollY > initailCordinates.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
