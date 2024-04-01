@@ -476,18 +476,68 @@ const tester = function (name) {
 const boundedFun = tester.bind(' the this keyword');
 boundedFun('Mathew'); //hello thisMathew and the this key is the this keyword
 
-//not recomended
-//select the postion where you want the nav bare to stick
+if (0) {
+  //not recomended
+  //select the postion where you want the nav bare to stick
 
-const initailCordinates = section1.getBoundingClientRect();
-//sticky navigation
-window.addEventListener('scroll', function (e) {
-  console.log(this.window.scrollY);
+  const initailCordinates = section1.getBoundingClientRect();
+  //sticky navigation
+  window.addEventListener('scroll', function (e) {
+    console.log(this.window.scrollY);
 
-  // .nav.sticky {
-  //    position: fixed;
-  //    background-color: rgba(255, 255, 255, 0.95);
-  //}
-  if (this.window.scrollY > initailCordinates.top) nav.classList.add('sticky');
-  else nav.classList.remove('sticky');
+    // .nav.sticky {
+    //    position: fixed;
+    //    background-color: rgba(255, 255, 255, 0.95);
+    //}
+    if (this.window.scrollY > initailCordinates.top)
+      nav.classList.add('sticky');
+    else nav.classList.remove('sticky');
+  });
+}
+
+if (0) {
+  // Sticky Navigation
+  //const section1 = document.querySelector('#section--1');
+  // this element will be called verytime section1 intersects the root element defined by obsOptions
+  // entries is basically the threshold in obsOptions object
+  const obsCallBack = function (entries, observer) {
+    entries.forEach(entries => {
+      console.log(entries);
+    });
+  };
+
+  const obsOptions = {
+    // root is the ement that the target is intersecting null is the viewport
+    root: null,
+    // this is the persentage at which obsCallBack will be called
+    //the array signifys at what position you want it to be triggred [0, 0.3]
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver(obsCallBack, obsOptions);
+  observer.observe(section1);
+}
+
+// so inorder to make a stiky element ill basically what it to stick when i move out of the view header elemt
+const headerElement = document.querySelector('.header');
+
+// dinamic size calculation for offset in headerObserver
+// basically gets the height from the view port
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function (entries) {
+  // array destructuring just incase an array is given
+  const [entry] = entries;
+  console.log(entry);
+  if (entry.isIntersecting) nav.classList.remove('sticky');
+  else nav.classList.add('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  // third arument is the offset from the targeted element used to do an early trigger
+  rootManager: `-${navHeight}px`,
 });
+
+headerObserver.observe(header);
