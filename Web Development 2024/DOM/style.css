@@ -1,0 +1,13 @@
+button {
+  background-color: aquamarine;
+  padding: 50px;
+  border: 2px solid white;
+  transition: all 1s;
+  font-size: 20px;
+}
+
+button:active,
+button:hover {
+  cursor: pointer;
+  border: 2px solid aquamarine;
+}
