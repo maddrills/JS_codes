@@ -36,6 +36,22 @@ app.listen(8080, () => {
   console.log("Listing on port 8080!");
 });
 
+//sub routes path variables
+app.get("/dad/:joke", (req, res) => {
+  //the url params a deconstructed and assigned to variable joke
+  const { joke } = req.params;
+
+  res.send(`<h1> the joker is ${joke}</h1>`);
+});
+
+//sub routes path variables but with more than two slashes
+app.get("/dad/:joke/:pj", (req, res) => {
+  //the url params a deconstructed and assigned to variable joke
+  const { joke, pj } = req.params;
+
+  res.send(`<h1> the joker is ${joke}</h1><br><h2>and the pj is ${pj}</h2>`);
+});
+
 //genaric response has to be the last requeat last resort
 app.get("*", (req, res) => {
   res.send("I dont know this path");
