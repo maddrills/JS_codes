@@ -10,9 +10,14 @@ const app = express();
 //   console.log("We got a new request");
 // });
 //all 8080 request with get and post
-app.use((req, res) => {
-  console.log("We got a new request");
-  res.send("Woooow we got a response");
+// app.use((req, res) => {
+//   console.log("We got a new request");
+//   res.send("Woooow we got a response");
+// });
+
+// get request
+app.get("/cats", (req, res) => {
+  res.send("Shaten butain");
 });
 
 //now create a port to listen for incoming requests
