@@ -6,8 +6,13 @@ const express = require("express");
 const app = express();
 
 //anytime a request is made this callback will run regardless if it a get or a post
-app.use(() => {
+// app.use(() => {
+//   console.log("We got a new request");
+// });
+//all 8080 request with get and post
+app.use((req, res) => {
   console.log("We got a new request");
+  res.send("Woooow we got a response");
 });
 
 //now create a port to listen for incoming requests
