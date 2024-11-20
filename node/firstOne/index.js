@@ -52,6 +52,14 @@ app.get("/dad/:joke/:pj", (req, res) => {
   res.send(`<h1> the joker is ${joke}</h1><br><h2>and the pj is ${pj}</h2>`);
 });
 
+//query string
+app.get("/dad", (req, res) => {
+  // gets the variable after eg ?q= in this example below the url must have http://localhost:8080/dad?age=40&pet=cat
+  const { age, pet } = req.query;
+
+  res.send(`<h1> age is ${age}, ${pet}</h1>`);
+});
+
 //genaric response has to be the last requeat last resort
 app.get("*", (req, res) => {
   res.send("I dont know this path");
