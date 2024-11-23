@@ -53,9 +53,16 @@ app.get("/dad/:joke/:pj", (req, res) => {
 });
 
 //query string
-app.get("/dad", (req, res) => {
-  // gets the variable after eg ?q= in this example below the url must have http://localhost:8080/dad?age=40&pet=cat
+app.get("/dadSays", (req, res) => {
+  // gets the variable after eg ?q= in this example below the url must have http://localhost:8080/dadSays?age=40&pet=cat
   const { age, pet } = req.query;
+
+  // if nothing fond then display nothing found
+  if (!age && !pet) {
+    res.send(
+      `<h1> try this :- http://localhost:8080/dadSays?age=40&pet=cat</h1>`
+    );
+  }
 
   res.send(`<h1> age is ${age}, ${pet}</h1>`);
 });
