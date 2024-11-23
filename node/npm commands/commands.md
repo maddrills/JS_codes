@@ -22,19 +22,24 @@
 
 ````md
 ```js
+"use strict";
 const express = require("express");
 const app = express();
+// get the absolute path of the project folder
+//get the path module
+const path = require("path");
 
-// below will inject ejs dependency
 app.set("view engine", "ejs");
+//join the path with the /views dir ... this is done so that we can exe this app form outside the project folder
+app.set("views", path.join(__dirname, "/views"));
 
-// a basic route to render template js or HTML or (js and HTML) code
-app.get("/", () => {
+app.get("/", (req, res) => {
+  // sends back a rendered template from views/home.ejs
   res.render("home.ejs");
 });
 
 app.listen(3000, () => {
-  console.log("listen on port 3000");
+  console.log("App is running and listening on port 30000");
 });
 ```
 ````
