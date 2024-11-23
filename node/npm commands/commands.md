@@ -20,20 +20,20 @@
 
 ### note in the app (index.js) you must do this
 
-const express = require('express');
-const app = express();
+> const express = require('express');
+> const app = express();
 
-// below will inject ejs dependency
-app.set('view engine', 'ejs');
+> // below will inject ejs dependency
+> app.set('view engine', 'ejs');
 
-// a basic route to render template js or HTML or (js and HTML) code
-app.get('/',()=>{
-res.render('home.ejs');
-})
+> // a basic route to render template js or HTML or (js and HTML) code
+> app.get('/',()=>{
+> res.render('home.ejs');
+> })
 
-app.listen(3000, ()=>{
-console.log("listen on port 3000");
-})
+> app.listen(3000, ()=>{
+> console.log("listen on port 3000");
+> })
 
 ### Run the app
 
