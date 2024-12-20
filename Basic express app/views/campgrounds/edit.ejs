@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Campground</title>
+</head>
+<body>
+<h1> Edit campground </h1>
+<form action="/campgrounds/" method="POST">
+    <div>
+        <label for="title">Title</label>
+        <!--        the request body will be stored under campground[title]-->
+        <input type="text" id="title" name="campground[title]" value="<%= campground.title%>">
+    </div>
+    <div>
+        <label for="location">Location</label>
+        <!--        the request body will be stored under campground[title]-->
+        <input type="text" id="location" name="campground[location]" value="<%= campground.location%>">
+    </div>
+    <button>Update Campground</button>
+</form>
+<div>
+    <a href="/campgrounds/<%= campground._id%>">Out of Edit mode</a>
+</div>
+</body>
+</html>

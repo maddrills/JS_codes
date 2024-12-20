@@ -8,7 +8,9 @@
     <title>New Campground</title>
 </head>
 <body>
-<form action="/campgrounds" method="POST">
+
+<!-- _method=PUT to used this make sure you use npm install  npm i method-override after that follow up the the changes in the app.js-->
+<form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
     <div>
         <label for="title">Title</label>
 <!--        the request body will be stored under campground[title]-->
